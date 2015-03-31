@@ -4,6 +4,9 @@ Pokedex.RootView.prototype.addPokemonToList = function (pokemon) {
 
 Pokedex.RootView.prototype.refreshPokemon = function () {
   this.pokes.fetch({
+    data: {
+      sort_by: "id"
+    },
     success: function (){
       this.pokes.each(function (pokemon) {
         this.addPokemonToList(pokemon);

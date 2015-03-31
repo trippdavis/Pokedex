@@ -9,13 +9,18 @@ Pokedex.RootView.prototype.addToyToList = function (toy) {
 };
 
 Pokedex.RootView.prototype.renderToyDetail = function (toy) {
-  var divDetail = $("<div class='detail'></div>");
+  var divDetail = $("<form class='detail'></form>");
 
   divDetail.append("<img src='" + toy.get('image_url') + "'>");
-  divDetail.append("<h4>" + toy.get('name') + "</h4>");
-  divDetail.append("Happiness: " + toy.get('happiness') + "<br>");
-  divDetail.append("Price: " + toy.get('price') + "<br>");
+  // divDetail.append("<h4>" + toy.get('name') + "</h4>");
+  // divDetail.append("Happiness: " + toy.get('happiness') + "<br>");
+  // divDetail.append("Price: " + toy.get('price') + "<br>");
 
+  divDetail.append("<input name='toy[name]' type='text' value='" + toy.get("name") + "'><br>");
+  divDetail.append("<input name='toy[image_url]' type='text' value='" + toy.get("image_url") + "'><br>");
+  divDetail.append("<input name='toy[happiness]' type='number' value='" + toy.get("happiness") + "'><br>");
+  divDetail.append("<input name='toy[price]' type='number' value='" + toy.get("price") + "'><br>");
+  divDetail.append("<button>Update</button>");
   var select = $("<select name='toy[pokemon_id]' data-pokemon-id='" + toy.get("pokemon_id") + "' data-toy-id='" + toy.get("id") + "'></select>");
 
   this.pokes.each(function (pokemon) {
